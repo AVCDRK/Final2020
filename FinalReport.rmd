@@ -27,19 +27,30 @@ $H_A$: The alternative hypothesis, is that among the target population,the vacci
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
-##Graphical Discriptive Rresults 
+##Graphical Discriptive Rresults
+
+
 
 ```{r}
 DataF = filter(TrialData,sex=="gal")
 barchartGC(~infected + treatment,data=DataF)
-barchartGC(~infected + treatment,data=DataF, type="percent")
+barchartGC(~infected + treatment,data=DataF, type="percent",main="Gals")
 
 ```
 
-Among the females who contracted aids twice as many took the placebo. Therefore, it appears that the vaccine does have a positive effect. 
+Among the females who contracted covid-19 twice as many took the placebo. Therefore, it appears that the vaccine does have a positive effect. 
+
+```{r}
+DataG = filter(TrialData,sex=="guy")
+barchartGC(~infected + treatment,data=DataG)
+barchartGC(~infected + treatment,data=DataG, type="percent",main="Guys")
+
+```
 
 
-
+It appears that the vaccine has a negative effect on the guys since they are more likely to get covid-19 if they receive the vaccine.
+ 
+ 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
