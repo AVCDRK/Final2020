@@ -27,6 +27,8 @@ $H_A$: The alternative hypothesis, is that among the target population,the vacci
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
+##Graphical Discriptive Rresults 
+
 ```{r}
 DataF = filter(TrialData,sex=="gal")
 barchartGC(~infected + treatment,data=DataF)
@@ -34,7 +36,9 @@ barchartGC(~infected + treatment,data=DataF, type="percent")
 
 ```
 
-Among the females who contracted aids twice as many took the placebo. Therefore, it appears that the vaccine does have an effect. 
+Among the females who contracted aids twice as many took the placebo. Therefore, it appears that the vaccine does have a positive effect. 
+
+
 
 # Discussion and Conclusion
 
