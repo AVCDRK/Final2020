@@ -9,7 +9,7 @@ output: html_document
 require(tidyverse)
 require(tigerstats)
 OldData <-read.csv(file="covid91.csv" ,header=TRUE)
-#recode aids to say covid and then remove theannoying "x" from the dataframe  
+#recode aids to say covid and then remove the annoying "x" from the dataframe  
 TrialData <- OldData %>% mutate(infected = recode(infected, aids ="covid", none = "OK" )) %>% select(-one_of("x")) 
 ```
 
@@ -58,8 +58,9 @@ colPerc(table1)
 ```{r}
 fisher.test(table1)
 ```
+The fisher  test shows the odds of getting Covid-19 are 0.4889403 to 1. the confidence interval for the odd ratio is 0.41 to 0.58.
 
-##data for males 
+##data for males   
 
 ```{r}
 DataG = filter(TrialData,sex=="guy")
