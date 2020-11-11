@@ -8,7 +8,9 @@ output: html_document
 ```{r include=FALSE,echo=FALSE}
 require(tidyverse)
 require(tigerstats)
-TrialData <-read.csv(file="covid91.csv",header=TRUE)
+OldData <-read.csv(file="covid91.csv" ,header=TRUE)
+#recode aids to say covid and then remove theannoying "x" from the dataframe  
+TrialData <- OldData %>% mutate(infected = recode(infected, aids ="covid", none = "OK" )) %>% select(-one_of("x")) 
 ```
 
 # Introduction
@@ -25,6 +27,12 @@ $H_A$: The alternative hypothesis, is that among the target population,the vacci
 
 # Results
 
+```{r}
+dataF=filter(TrialData, sex == "gal")
+```
+
+
+
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
 ##Graphical Discriptive Rresults
@@ -40,6 +48,19 @@ barchartGC(~infected + treatment,data=DataF, type="percent",main="Gals")
 
 Among the females who contracted covid-19 twice as many took the placebo. Therefore, it appears that the vaccine does have a positive effect. 
 
+
+```{r}
+table1 <- xtabs(~infected + treatment,data=DataF)
+rowPerc(table1)
+colPerc(table1)
+```
+
+```{r}
+fisher.test(table1)
+```
+
+##data for males 
+
 ```{r}
 DataG = filter(TrialData,sex=="guy")
 barchartGC(~infected + treatment,data=DataG)
@@ -50,6 +71,16 @@ barchartGC(~infected + treatment,data=DataG, type="percent",main="Guys")
 
 It appears that the vaccine has a negative effect on the guys since they are more likely to get covid-19 if they receive the vaccine.
  
+```{r}
+table1 <- xtabs(~infected + treatment,data=DataG)
+rowPerc(table1)
+colPerc(table1)
+```
+ 
+ 
+```{r}
+fisher.test(table1)
+```
  
 # Discussion and Conclusion
 
