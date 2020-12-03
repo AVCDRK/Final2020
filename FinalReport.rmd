@@ -109,7 +109,41 @@ colPerc(table1)
 fisher.test(table1)
 ```
 
+## Drugusers
+
+```{r}
+TrialData = filter(TrialData,DrugUser=="yes")
+barchartGC(~infected + treatment,data=TrialData)
+barchartGC(~infected + treatment,data=TrialData, type="percent",main="DrugUser")
+
+```
+
+
+It appears that the vaccine has a positive effect on the Drug users since they are more likely to get covid-19 if they do not receive the vaccine.
  
+```{r}
+table1 <- xtabs(~infected + treatment,data=TrialData)
+rowPerc(table1)
+colPerc(table1)
+```
+ 
+ 
+```{r}
+fisher.test(table1)
+```
+
+
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+According to the charts and numerical results, it seems that the females that took the drug are less likely to contract COVID-19. From the women who took the drug only 33.11 got infected with Covid-19. According to the inferential test that was 95.56% that were not infected making the vaccine very effective among the female population. Therefore, we fail to reject the Null hypothesis.  
+
+According to the male and numerical results males who took the vaccine were contracting COVID-19. 58.16% of the males who took the treatment contracted coivd and only 48.54 were ok. From this data it seems that men are most likely to contract COVID-19 when given the vaccine. Therefore, we reject the Null hypothesis.   
+
+According to the LGBTQ data 70.69% contracted Covid-19 when given the vaccine. 49.17% did not contract Covid-19 when given the vaccine. This shows that the vaccine had no postive effect in the LGBTQ population.   
+
+According to the data from the drug users those who were given the vaccine had not contracted Covid-19. compared to those who were given the placebo had a 100% chance of contracting Covid -19. Therefore, we fail to reject the Null hypothosis among drug users.   
+
+
+
+
